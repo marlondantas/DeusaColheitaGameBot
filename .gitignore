@@ -1,0 +1,11 @@
+*.class
+/log
+config.properties
+/.vscode
+persistence.xml
+DeusaColheita.sql
+.settings/
+.project
+target/*
+discordBot.properties
+/src/main/resources/discordBot.properties
