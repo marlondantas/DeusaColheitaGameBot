@@ -76,6 +76,7 @@ public class MaiorOperacao extends AbstractOperacao {
 		} catch (Exception e) {
 			jogoDAO.rollBack();
 			logger.error(e.getMessage());
+			e.getStackTrace();
 	
 		}finally {
 			jogoDAO.close();
