@@ -24,4 +24,20 @@ public class HistoricoJogoDAO extends AbstractDAO<Integer, HistoricoJogo> {
 		return (HistoricoJogo) query.getSingleResult();
 	}
 	
+	
+	public boolean apagarHistoricoID(Jogo jogador) {
+		
+		Query query = entityManager.createNativeQuery("DELETE FROM TBOD_HISTORICO_JOGO WHERE  ID_JOGO = :ID_JOGO");
+		
+		query.setParameter("ID_JOGO",jogador.getId());
+		
+		int result = query.executeUpdate();
+
+		if( result > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 }

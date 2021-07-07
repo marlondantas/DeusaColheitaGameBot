@@ -54,8 +54,8 @@ public class OperacaoService implements MessageCreateListener {
 		operacoes.put("info", new InfoOperacao());
 		operacoes.put("ping", new PingOperacao());
 		operacoes.put("cancelar", new PingOperacao());
-		operacoes.put("apagar", new PingOperacao());
-		operacoes.put("apagarall", new PingOperacao());
+		operacoes.put("apagar", new ApagarOperacao());
+		operacoes.put("apagarall", new ApagarALLOperacao());
 		operacoes.put("prefixo", new PrefixoOperacao());
 		
 		return operacoes;
