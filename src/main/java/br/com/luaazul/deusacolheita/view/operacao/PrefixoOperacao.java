@@ -28,8 +28,19 @@ public class PrefixoOperacao extends AbstractOperacao {
 			    .setTitle("Operacao Realizada")
 			    .setDescription("Bot by Mar@MoonBlue")
 			    .setColor(Color.GREEN);
-		
+
 		try {
+			if(!event.getMessageAuthor().isServerAdmin()) {
+				
+				embed = new EmbedBuilder()
+					    .setTitle("O usuario não é ADM no servidor")
+					    .setDescription("Bot by Mar@MoonBlue")
+					    .setColor(Color.RED);
+				
+				
+				event.getChannel().sendMessage(embed);
+				return;
+			}
 			servidorDAO.beginTransaction();
 			//pega o prefixo
 			String[] arrayValores = event.getMessage().getContent().toUpperCase().split(" ");

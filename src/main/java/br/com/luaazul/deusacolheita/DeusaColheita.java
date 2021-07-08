@@ -23,14 +23,14 @@ public class DeusaColheita {
 		GeradorManagerFactory.iniciarBanco();
 		// criar DAO das clases OKAY
 
-		// TODO ler o arquivo de configuracao
+		///Ler o arquivo de configuracao
 		logger.info("INICIANDO LEITURA DE TOKEN DISCORD");
 		DiscordToken.carregarProperties();
 		
-		// TODO Conectar no bot do discord.	
+		//Conectar no bot do discord.	
 		DiscordService discordService = new DiscordService(DiscordToken.getTOKEN());
 		
-		// TODO escutar as chamadas.
+		//Escutar as chamadas.
 		discordService.addOperacao(new OperacaoService());
 		
 		discordService.startBot();

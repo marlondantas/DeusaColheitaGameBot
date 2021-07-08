@@ -23,6 +23,10 @@ public class JogoDAO extends AbstractDAO<Integer, Jogo>{
 
 	private final String BUSCAR_ULTIMO_JOGO = "SELECT J FROM Jogo J WHERE J.jogador =:jogador AND J.servidor =:servidor AND J.status = '0' ";
 	
+	private final String BUSCAR_MELHORES_JOGOS_JOGO = "SELECT J FROM Jogo J WHERE J.jogador=:jogador order by J.pontos desc";
+	
+	private final String BUSCAR_MELHORES_JOGOS_SERVIDOR = "SELECT J FROM Jogo J WHERE J.servidor=:servidor order by J.pontos desc";
+	
 	public JogoDAO() {
         super();
     }
@@ -75,6 +79,30 @@ public class JogoDAO extends AbstractDAO<Integer, Jogo>{
 		query.setParameter("jogador",jogador.getJogador());
 				
 		return (List<Jogo>) query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Jogo> buscarTopTresJogo(Jogo jogador){
+		
+		Query query = entityManager.createQuery(BUSCAR_MELHORES_JOGOS_JOGO, Jogo.class);
+		query.setMaxResults(3);
+		
+		query.setParameter("jogador",jogador.getJogador());
+				
+		return (List<Jogo>) query.getResultList();
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Jogo> buscarTopTresServidor(Jogo jogador){
+		
+		Query query = entityManager.createQuery(BUSCAR_MELHORES_JOGOS_SERVIDOR, Jogo.class);
+		query.setMaxResults(3);
+		
+		query.setParameter("servidor",jogador.getServidor());
+				
+		return (List<Jogo>) query.getResultList();
+		
 	}
 	
 	

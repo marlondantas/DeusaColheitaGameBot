@@ -26,8 +26,7 @@ public class OperacaoService implements MessageCreateListener {
 	public void onMessageCreate(MessageCreateEvent event) {
 		
 		//verifica se nao e um bot
-		
-		//verificar prefixo do servidor
+				//verificar prefixo do servidor
 		Servidor servidor = new Servidor();
 		servidor.setIdServidor(event.getServer().get().getIdAsString());
 		
@@ -47,8 +46,8 @@ public class OperacaoService implements MessageCreateListener {
 		Map<String, AbstractOperacao> operacoes = new HashMap<String, AbstractOperacao>();
 
 		operacoes.put("start", new StartOperacao());
-		operacoes.put("me", new PingOperacao());
-		operacoes.put("rank", new PingOperacao());
+		operacoes.put("me", new MeOperacao());
+		operacoes.put("rank", new RankOperacao());
 		operacoes.put("maior", new MaiorOperacao());
 		operacoes.put("menor", new MenorOperacao());
 		operacoes.put("info", new InfoOperacao());
